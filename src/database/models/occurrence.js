@@ -24,11 +24,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
+    
+    // CORREÇÃO: categoryId deve ser UUID pois o model Category usa UUID
     categoryId: DataTypes.UUID,
-    userId: DataTypes.UUID
+    
+    // CORREÇÃO: userId deve ser INTEGER pois o model User usa INTEGER
+    userId: DataTypes.INTEGER 
   }, {
     sequelize,
-    modelName: 'Occurrence'
+    modelName: 'Occurrence',
+    tableName: 'Occurrences' // Boa prática: definir nome da tabela explicitamente
   });
 
   return Occurrence;
