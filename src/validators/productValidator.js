@@ -6,31 +6,35 @@ module.exports = {
       .notEmpty().withMessage('Nome é obrigatório')
       .isLength({ min: 2 }).withMessage('Nome muito curto'),
 
-    body('categoryId')
+    body('productCategoryId')
       .notEmpty().withMessage('Categoria é obrigatória')
-      .isInt().withMessage('categoryId deve ser inteiro'),
+      .isInt().withMessage('productCategoryId deve ser inteiro'),
 
-    body('situationId')
+    body('productSituationId')
       .notEmpty().withMessage('Situação é obrigatória')
-      .isInt().withMessage('situationId deve ser inteiro'),
+      .isInt().withMessage('productSituationId deve ser inteiro'),
 
     body('price')
-      .optional()
+      .notEmpty().withMessage('Preço é obrigatório')
       .isFloat({ min: 0 }).withMessage('Preço deve ser positivo'),
-
-    body('stock')
-      .optional()
-      .isInt({ min: 0 }).withMessage('Estoque deve ser positivo')
   ],
 
   update: [
     param('id').isInt().withMessage('ID do produto inválido'),
     
     body('name').optional().isLength({ min: 2 }),
-    body('categoryId').optional().isInt(),
-    body('situationId').optional().isInt(),
-    body('price').optional().isFloat({ min: 0 }),
-    body('stock').optional().isInt({ min: 0 })
+
+    body('productCategoryId')
+      .optional()
+      .isInt().withMessage('productCategoryId deve ser inteiro'),
+
+    body('productSituationId')
+      .optional()
+      .isInt().withMessage('productSituationId deve ser inteiro'),
+
+    body('price')
+      .optional()
+      .isFloat({ min: 0 }).withMessage('Preço deve ser positivo'),
   ],
 
   show: [

@@ -4,9 +4,7 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
 module.exports = {
-  // -----------------------------
-  // CADASTRO
-  // -----------------------------
+
   async signup(req, res) {
     try {
       const { name, email, password } = req.body;
@@ -27,9 +25,7 @@ module.exports = {
     }
   },
 
-  // -----------------------------
-  // LOGIN
-  // -----------------------------
+
   async signin(req, res) {
     try {
       const { email, password } = req.body;
@@ -52,9 +48,7 @@ module.exports = {
     }
   },
 
-  // -----------------------------
-  // GERAR TOKEN DE RECUPERAÇÃO
-  // -----------------------------
+
   async forgot(req, res) {
     try {
       const { email } = req.body;
@@ -79,9 +73,7 @@ module.exports = {
     }
   },
 
-  // -----------------------------
-  // RESETAR SENHA
-  // -----------------------------
+
   async reset(req, res) {
     try {
       const { token } = req.params;
